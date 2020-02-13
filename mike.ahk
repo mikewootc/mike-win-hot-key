@@ -1,44 +1,4 @@
-﻿; Mike {{{ ==============================================================================
-
-; Terminal
-#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
-
-; Firefox <Win + b>
-#b::Run firefox.exe www.baidu.com
-
-; Close window <Win + c>
-#c::Send !{F4}
-
-; Switch window <Win + Tab>
-#Tab::Send {Alt down}{Tab}{Alt up}
-
-; gvim
-#v::Run gvim
-
-^+::Return
-
-; Sim linux cmd line: <Ctrl-Shift-c>
-^+c::Send {Ctrl}{Ins}
-
-; Sim linux cmd line: <Ctrl-Shift-v>
-^+v::Send {Shift}{Ins}
-
-Capslock=::<Down>
-
-; 最大化 <Win + a>
-#a::
-    WinGetPos, X, Y, , , A  ; "A" 表示获取活动窗口的位置.
-    if (X = -4 and Y = -4) {
-        WinRestore, A
-    } else {
-        WinMaximize, A
-    }
-    ;MsgBox, The active window is at %X%`,%Y%
-return
-
-; Mike }}} ==============================================================================
-
-
+﻿
 
 
 
@@ -787,3 +747,46 @@ GuiClose:
 GuiEscape:
 Gui, Cancel
 return
+
+
+
+; Mike {{{ ==============================================================================
+
+; Terminal
+#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
+
+; Firefox <Win + b>
+#b::Run firefox.exe www.baidu.com
+
+; Close window <Win + c>
+#c::Send !{F4}
+
+; Switch window <Win + Tab>
+#Tab::Send {Alt down}{Tab}{Alt up}
+
+; gvim
+#v::Run gvim
+
+; Sim linux cmd line: <Ctrl-Shift-c>
+^+c::Send {Ctrl}{Ins}
+
+; Sim linux cmd line: <Ctrl-Shift-v>
+^+v::Send {Shift}{Ins}
+
+; 最大化 <Win + a>
+#a::
+    WinGetPos, X, Y, , , A  ; "A" 表示获取活动窗口的位置.
+    if (X = -4 and Y = -4) {
+        WinRestore, A
+    } else {
+        WinMaximize, A
+    }
+    ;MsgBox, The active window is at %X%`,%Y%
+return
+
+; Mike }}} ==============================================================================
+
+
+
+
+
