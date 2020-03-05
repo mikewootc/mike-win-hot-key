@@ -1,13 +1,4 @@
-﻿
-
-
-
-
-
-
-
-
-if not A_IsAdmin ;running by administrator
+﻿if not A_IsAdmin ;running by administrator
 {
    Run *RunAs "%A_ScriptFullPath%" 
    ExitApp
@@ -753,7 +744,8 @@ return
 ; Mike {{{ ==============================================================================
 
 ; Terminal
-#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
+;#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
+#Enter::Run "git-bash.exe" --cd-to-home
 
 ; Firefox <Win + b>
 #b::Run firefox.exe www.baidu.com
@@ -776,12 +768,12 @@ return
 ; 最大化 <Win + a>
 #a::
     WinGetPos, X, Y, , , A  ; "A" 表示获取活动窗口的位置.
-    if (X = -4 and Y = -4) {
+    ; MsgBox, The active window is at %X%`,%Y%
+    if ((X = -4 and Y = -4) or ((X = -8 and Y = -8))) {
         WinRestore, A
     } else {
         WinMaximize, A
     }
-    ;MsgBox, The active window is at %X%`,%Y%
 return
 
 ; Mike }}} ==============================================================================
