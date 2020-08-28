@@ -755,12 +755,18 @@ return
 
 ; Switch window <Win + Tab>
 #Tab::Send {Alt down}{Tab}{Alt up}
+!q::Send !{Tab}
+
+
+; Switch web page <Ctrl + Q --> Ctrl + Tab>
+^q::Send ^{Tab}
 
 ; gvim
 #v::Run gvim
 
 ; Sim linux cmd line: <Ctrl-Shift-c>
-^+c::Send {Ctrl}{Ins}
+;^+c::Send {Ctrl}{Ins}
+^+c::Send ^{Ins}
 
 ; Sim linux cmd line: <Ctrl-Shift-v>
 ^+v::Send {Shift}{Ins}
