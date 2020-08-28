@@ -769,7 +769,7 @@ return
 #a::
     WinGetPos, X, Y, , , A  ; "A" 表示获取活动窗口的位置.
     ; MsgBox, The active window is at %X%`,%Y%
-    if ((X = -4 and Y = -4) or ((X = -8 and Y = -8))) {
+    if ((X = -4 and Y = -4) or ((X = -8 and Y = -8)) or ((X = -13 and Y = -13))) {
         WinRestore, A
     } else {
         WinMaximize, A
