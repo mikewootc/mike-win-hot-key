@@ -766,10 +766,10 @@ return
 
 ; Sim linux cmd line: <Ctrl-Shift-c>
 ;^+c::Send {Ctrl}{Ins}
-^+c::Send ^{Ins}
+;^+c::Send ^{Ins}
 
 ; Sim linux cmd line: <Ctrl-Shift-v>
-^+v::Send {Shift}{Ins}
+;^+v::Send {Shift}{Ins}
 
 ; 最大化 <Win + a>
 #a::
