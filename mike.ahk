@@ -747,6 +747,9 @@ return
 ;#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
 #Enter::Run "git-bash.exe" --cd-to-home
 
+; Explorer
+#e::Run, explore D:\git_home\mike
+
 ; Firefox <Win + b>
 #b::Run firefox.exe www.baidu.com
 
