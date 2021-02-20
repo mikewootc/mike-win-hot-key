@@ -748,7 +748,11 @@ return
 #Enter::Run "git-bash.exe" --cd-to-home
 
 ; Explorer
-#e::Run, explore D:\git_home\mike
+;#e::Run, explore D:\git_home\mike
+#e::
+    EnvGet, MY_HOME, HOME
+    Run, explore %MY_HOME%
+return
 
 ; Firefox <Win + b>
 #b::Run firefox.exe www.baidu.com
