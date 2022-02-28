@@ -743,12 +743,16 @@ return
 
 ; Mike {{{ ==============================================================================
 
-; Terminal
+; Terminal (Git bash)
 ;#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
 #Enter::Run "git-bash.exe" --cd-to-home
 
+; Terminal (ConEmu)
+#t::Run "ConEmu64.exe"
+
 ; Explorer
-#e::Run, explore D:\git_home\mike
+;#e::Run, explore C:\Users\wytab\
+#e::Run, explore
 
 ; Firefox <Win + b>
 #b::Run firefox.exe www.baidu.com
@@ -778,7 +782,8 @@ return
 #a::
     WinGetPos, X, Y, , , A  ; "A" 表示获取活动窗口的位置.
     ; MsgBox, The active window is at %X%`,%Y%
-    if ((X = -4 and Y = -4) or ((X = -8 and Y = -8)) or ((X = -13 and Y = -13))) {
+;    if ((X = -4 and Y = -4) or ((X = -8 and Y = -8)) or ((X = -13 and Y = -13))) {
+    if (X < 0 and Y < 0 and X = Y) {
         WinRestore, A
     } else {
         WinMaximize, A
