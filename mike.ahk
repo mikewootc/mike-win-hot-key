@@ -765,6 +765,10 @@ return
 ; Close window <Win + c>
 #c::Send !{F4}
 
+; Set meeting volume <Win + m>
+#=::Run nircmd.exe setsysvolume 32768
+#-::Run nircmd.exe setsysvolume 6553
+
 ; Switch window <Win + Tab>
 ;#Tab::Send {Alt down}{Tab}{Alt up}
 ;!q::Send !{Tab}
