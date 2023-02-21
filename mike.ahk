@@ -742,6 +742,10 @@ return
 
 
 ; Mike {{{ ==============================================================================
+; 符号缩写:
+;   * #: Win
+;   * ^: Ctrl
+;   * Enter: 回车
 
 ; Terminal (Git bash)
 ;#Enter::Run "C:\Program Files\Git\git-bash.exe" --cd-to-home
