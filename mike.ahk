@@ -773,6 +773,15 @@ return
 #=::Run nircmd.exe setsysvolume 32768
 #-::Run nircmd.exe setsysvolume 6553
 
+#F11:: ; When Win + F11 is pressed
+    ; Volume - 2% ; Decrease volume
+    Send {Volume_Down}
+    return
+#F12:: ; When Win + F12 is pressed
+    ; Volume + 2% ; Increase volume
+    Send {Volume_Up}
+    return
+
 ; Switch window <Win + Tab>
 ;#Tab::Send {Alt down}{Tab}{Alt up}
 ;!q::Send !{Tab}
@@ -802,6 +811,34 @@ return
         WinMaximize, A
     }
 return
+
+
+; 当按下 Caps Lock + 鼠标左键时
+~CapsLock & LButton::
+    ; 循环7次
+    Loop, 5 {
+        ; 模拟鼠标左键点击
+        Click, Left
+        ; 加上一点小延迟, 防止系统无法跟上连续点击的速度
+        ;Sleep, 1
+    }
+    ; 释放 Caps Lock 键的状态
+    ;SetCapsLockState, AlwaysOff
+    ; 返回结果
+    return
+
+~CapsLock & RButton::
+    ; 循环7次
+    Loop, 5 {
+        ; 模拟鼠标点击
+        Click, Right
+        ; 加上一点小延迟, 防止系统无法跟上连续点击的速度
+        ;Sleep, 1
+    }
+    ; 释放 Caps Lock 键的状态
+    ;SetCapsLockState, AlwaysOff
+    ; 返回结果
+    return
 
 
 
