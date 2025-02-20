@@ -745,6 +745,7 @@ return
 ; 符号缩写:
 ;   * #: Win
 ;   * ^: Ctrl
+;   * !: Alt
 ;   * Enter: 回车
 
 ; Terminal (Git bash)
@@ -770,8 +771,8 @@ return
 #c::Send !{F4}
 
 ; Set meeting volume <Win + m>
-#=::Run nircmd.exe setsysvolume 32768
-#-::Run nircmd.exe setsysvolume 6553
+#0::Run nircmd.exe setsysvolume 32768
+#9::Run nircmd.exe setsysvolume 6553
 
 #F11:: ; When Win + F11 is pressed
     ; Volume - 2% ; Decrease volume
@@ -792,6 +793,11 @@ return
 
 ; gvim
 #v::Run gvim
+
+; <Ctrl + Alt + X>
+^!x::
+Run, "YoudaoDict.exe"
+return
 
 ; Sim linux cmd line: <Ctrl-Shift-c>
 ;^+c::Send {Ctrl}{Ins}
@@ -971,7 +977,7 @@ LWin & 5::switchDesktopByNumber(5)
 LWin & 6::switchDesktopByNumber(6)
 LWin & 7::switchDesktopByNumber(7)
 LWin & 8::switchDesktopByNumber(8)
-LWin & 9::switchDesktopByNumber(9)
+;LWin & 9::switchDesktopByNumber(9)
 ;CapsLock & 1::switchDesktopByNumber(1)
 ;CapsLock & 2::switchDesktopByNumber(2)
 ;CapsLock & 3::switchDesktopByNumber(3)
@@ -1005,7 +1011,6 @@ LWin & 9::switchDesktopByNumber(9)
 ;^!d::deleteVirtualDesktop()
 
 ; 虚拟桌面切换 }}}
-
 
 
 ; Mike }}} ==============================================================================
