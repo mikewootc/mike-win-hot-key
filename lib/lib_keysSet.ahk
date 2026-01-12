@@ -20,6 +20,10 @@ if(!keyset.caps_u)
     keyset.caps_u:="keyFunc_home"
 if(!keyset.caps_m)
     keyset.caps_m:="keyFunc_end"
+if(!keyset.caps_i)
+    keyset.caps_i:="keyFunc_pageUp"
+if(!keyset.caps_comma)
+    keyset.caps_comma:="keyFunc_pageDown"
 
 ; if(!keyset.caps_a)
 ;     keyset.caps_a:="keyFunc_moveWordLeft"

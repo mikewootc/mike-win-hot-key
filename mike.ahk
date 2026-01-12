@@ -783,6 +783,20 @@ return
     Send {Volume_Up}
     return
 
+
+; 按住 CapsLock + ↑ 上箭头 → 发送 Shift+PageUp
+CapsLock & Up::Send +{PgUp}
+
+; 按住 CapsLock + ↓ 下箭头 → 发送 Shift+PageDown
+CapsLock & Down::Send +{PgDn}
+
+; CapsLock + ← 左箭头 → Shift + Home
+CapsLock & Left::Send +{Home}
+
+; CapsLock + → 右箭头 → Shift + End
+CapsLock & Right::Send +{End}
+
+
 ; Switch window <Win + Tab>
 ;#Tab::Send {Alt down}{Tab}{Alt up}
 ;!q::Send !{Tab}
@@ -851,7 +865,7 @@ return
 ; 虚拟桌面切换 {{{
 
 ; Globals
-DesktopCount = 2 ; Windows starts with 2 desktops at boot
+DesktopCount = 3 ; Windows starts with 2 desktops at boot
 CurrentDesktop = 1 ; Desktop count is 1-indexed (Microsoft numbers them this way)
 ;
 ; This function examines the registry to build an accurate list of the current virtual desktops and which one we're currently on.
@@ -940,6 +954,12 @@ switchDesktopByNumber(targetDesktop)
  CurrentDesktop--
  OutputDebug, [left] target: %targetDesktop% current: %CurrentDesktop%
  }
+ if (targetDesktop = 1) {
+    Send ^#{Left} ; If we switch to desktop 1, we need to send an extra left to make sure to the 1st desktop.
+ }
+ if (targetDesktop = 2) {
+    Send ^#{Right}
+ }
 }
 ;
 ; This function creates a new virtual desktop and switches to it
@@ -978,6 +998,7 @@ LWin & 6::switchDesktopByNumber(6)
 LWin & 7::switchDesktopByNumber(7)
 LWin & 8::switchDesktopByNumber(8)
 ;LWin & 9::switchDesktopByNumber(9)
+
 ;CapsLock & 1::switchDesktopByNumber(1)
 ;CapsLock & 2::switchDesktopByNumber(2)
 ;CapsLock & 3::switchDesktopByNumber(3)
