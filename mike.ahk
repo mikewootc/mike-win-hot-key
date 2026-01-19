@@ -797,6 +797,23 @@ CapsLock & Left::Send +{Home}
 CapsLock & Right::Send +{End}
 
 
+; 右Ctrl + ] → 音量增大
+RControl & ]::
+    Send {Volume_Up}
+return
+; 右Ctrl + [ → 音量减小
+RControl & [::
+    Send {Volume_Down}
+return
+; 右Ctrl + 反斜杠 → 静音切换
+RControl & \::
+    Send {Volume_Mute}
+return
+; 保持单独按右Ctrl时的原生功能（可选，不加这行也不影响组合键）
+RControl::Send {RControl}
+
+
+
 ; Switch window <Win + Tab>
 ;#Tab::Send {Alt down}{Tab}{Alt up}
 ;!q::Send !{Tab}
