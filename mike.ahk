@@ -830,6 +830,25 @@ RControl::Send {RControl}
 Run, "YoudaoDict.exe"
 return
 
+
+;#NoEnv  ; 禁用空环境变量检查，提升脚本性能
+;SendMode Input  ; 使用更可靠的Input发送模式，避免按键失效
+;SetWorkingDir %A_ScriptDir%  ; 设置工作目录为脚本所在文件夹
+; 定义热键：Ctrl+Alt+O（^=Ctrl，!=Alt，o=字母O）
+^!o::
+    ; 第一步：模拟按下Ctrl+C（复制）
+    Send, ^c
+    Sleep, 50  ; 延迟50毫秒，确保复制操作完成（可根据需要调整为100）
+    ; 第二步：模拟按下Esc键
+    Send, {Esc}
+    Sleep, 50  ; 小延迟避免系统响应不及时
+    ; 第三步：模拟按下Ctrl+V（粘贴）
+    Send, ^v
+return  ; 结束热键执行逻辑
+
+
+
+
 ; Sim linux cmd line: <Ctrl-Shift-c>
 ;^+c::Send {Ctrl}{Ins}
 ;^+c::Send ^{Ins}
