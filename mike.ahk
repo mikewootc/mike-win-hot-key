@@ -786,16 +786,21 @@ return
 
 ; 按住 CapsLock + ↑ 上箭头 → 发送 Shift+PageUp
 CapsLock & Up::Send +{PgUp}
-
 ; 按住 CapsLock + ↓ 下箭头 → 发送 Shift+PageDown
 CapsLock & Down::Send +{PgDn}
-
 ; CapsLock + ← 左箭头 → Shift + Home
 CapsLock & Left::Send +{Home}
-
 ; CapsLock + → 右箭头 → Shift + End
 CapsLock & Right::Send +{End}
 
+; 右Ctrl + 上 → PageUp
+RControl & Up::Send {PgUp}
+; 右Ctrl + 下 → PageDown
+RControl & Down::Send {PgDn}
+; 右Ctrl + 左 → Home
+RControl & Left::Send {Home}
+; 右Ctrl + 右 → End
+RControl & Right::Send {End}
 
 ; 右Ctrl + ] → 音量增大
 RControl & ]::
