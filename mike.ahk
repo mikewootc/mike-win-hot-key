@@ -838,15 +838,61 @@ return
 
 ; 定义热键(豆包语音粘贴)：Ctrl+Alt+O（^=Ctrl，!=Alt，o=字母O）
 ^!o::
+    ; 保存当前剪贴板内容，避免本次替换破坏系统剪贴板
+    ClipSaved := ClipboardAll
+    Clipboard := ""
+
     ; 第一步：模拟按下Ctrl+C（复制）
     Send, ^c
+    ClipWait, 0.5
+    if ErrorLevel
+    {
+        Clipboard := ClipSaved
+        return
+    }
     Sleep, 50  ; 延迟50毫秒，确保复制操作完成（可根据需要调整为100）
+
     ; 第二步：模拟按下Esc键
     Send, {Esc}
     Sleep, 50  ; 小延迟避免系统响应不及时
-    ; 第三步：模拟按下 shift+Insert（粘贴）
+    ; 在粘贴前做中英文符号替换
+    Clipboard := normalizeChinesePunctuation(Clipboard)
+
+    ; 第三步：模拟按下Shift+Insert（粘贴）
     Send, +{Insert}
+    Sleep, 50
+
+    ; 恢复原始剪贴板内容
+    Clipboard := ClipSaved
 return  ; 结束热键执行逻辑
+
+normalizeChinesePunctuation(text)
+{
+    ; 结尾符号替换
+    text := RegExReplace(text, "，$", ",")
+    text := RegExReplace(text, "。$", ".")
+    text := RegExReplace(text, "！$", "!")
+    text := RegExReplace(text, "？$", "?")
+    text := RegExReplace(text, "）$", ")")
+    text := RegExReplace(text, "】$", "]")
+
+    text := StrReplace(text, "（", "(")
+    text := StrReplace(text, "【", "[")
+    text := StrReplace(text, "《", "<<")
+    text := StrReplace(text, "》", ">>")
+    text := StrReplace(text, "「", "'")
+    text := StrReplace(text, "」", "'")
+
+    ; 中间符号替换
+    text := StrReplace(text, "，", ", ")
+    text := StrReplace(text, "。", ". ")
+    text := StrReplace(text, "！", "! ")
+    text := StrReplace(text, "？", "? ")
+    text := StrReplace(text, "）", ") ")
+    text := StrReplace(text, "】", "] ")
+
+    return text
+}
 
 
 
