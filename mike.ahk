@@ -844,7 +844,7 @@ return
     ; 第二步：模拟按下Esc键
     Send, {Esc}
     Sleep, 50  ; 小延迟避免系统响应不及时
-    ; 第三步：模拟按下Ctrl+V（粘贴）
+    ; 第三步：模拟按下 shift+Insert（粘贴）
     Send, +{Insert}
 return  ; 结束热键执行逻辑
 
